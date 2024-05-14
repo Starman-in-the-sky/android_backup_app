@@ -1,3 +1,0 @@
-E:/Work/Projects/University Projects/plusi_kursach/Phone_backup_app/out/build/x64-debug/CMakeFiles/Phone_backup_app.dir
-E:/Work/Projects/University Projects/plusi_kursach/Phone_backup_app/out/build/x64-debug/CMakeFiles/edit_cache.dir
-E:/Work/Projects/University Projects/plusi_kursach/Phone_backup_app/out/build/x64-debug/CMakeFiles/rebuild_cache.dir

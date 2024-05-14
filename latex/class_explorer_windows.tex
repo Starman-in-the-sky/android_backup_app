@@ -1,0 +1,81 @@
+\doxysection{РљР»Р°СЃСЃ Explorer\+Windows}
+\hypertarget{class_explorer_windows}{}\label{class_explorer_windows}\index{ExplorerWindows@{ExplorerWindows}}
+
+
+Класс для управления файловой системой и подключенными устройствами в Windows.  
+
+
+
+
+{\ttfamily \#include $<$Explorer\+Windows.\+h$>$}
+
+\doxysubsubsection*{РћС‚РєСЂС‹С‚С‹Рµ С‡Р»РµРЅС‹}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_explorer_windows_a4a5999289d346010c44fcf3a5e161b19}\label{class_explorer_windows_a4a5999289d346010c44fcf3a5e161b19} 
+{\bfseries Explorer\+Windows} ()
+\begin{DoxyCompactList}\small\item\em Конструктор класса \doxylink{class_explorer_windows}{Explorer\+Windows}. Инициализирует текущий путь текущим рабочим каталогом. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_explorer_windows_aed2c4116c5c679c80c035b8019cdee92}{draw\+Filesystem}} (Im\+Font \texorpdfstring{$\ast$}{*}font, Im\+Font \texorpdfstring{$\ast$}{*}font32)
+\begin{DoxyCompactList}\small\item\em Отрисовывает файловую систему в окне Im\+Gui. \end{DoxyCompactList}\item 
+\Hypertarget{class_explorer_windows_aa6d691502363ee1036be761014df2297}\label{class_explorer_windows_aa6d691502363ee1036be761014df2297} 
+void {\bfseries update\+Drives\+And\+Devices} ()
+\begin{DoxyCompactList}\small\item\em Обновляет список логических дисков и подключенных устройств. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_explorer_windows_a82e3eb9dbb8de05f26918285c7aac99b}{is\+Device\+Connected}} ()
+\begin{DoxyCompactList}\small\item\em Проверяет, подключено ли Android-\/устройство. \end{DoxyCompactList}\item 
+std\+::pair$<$ float, float $>$ \mbox{\hyperlink{class_explorer_windows_a892bd82f04f57d041cff73d2bb762464}{get\+Memory\+Info}} ()
+\begin{DoxyCompactList}\small\item\em Получает информацию о памяти устройства. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{РџРѕРґСЂРѕР±РЅРѕРµ РѕРїРёСЃР°РЅРёРµ}
+Класс для управления файловой системой и подключенными устройствами в Windows. 
+
+\doxysubsection{РњРµС‚РѕРґС‹}
+\Hypertarget{class_explorer_windows_aed2c4116c5c679c80c035b8019cdee92}\label{class_explorer_windows_aed2c4116c5c679c80c035b8019cdee92} 
+\index{ExplorerWindows@{ExplorerWindows}!drawFilesystem@{drawFilesystem}}
+\index{drawFilesystem@{drawFilesystem}!ExplorerWindows@{ExplorerWindows}}
+\doxysubsubsection{\texorpdfstring{drawFilesystem()}{drawFilesystem()}}
+{\footnotesize\ttfamily void Explorer\+Windows\+::draw\+Filesystem (\begin{DoxyParamCaption}\item[{Im\+Font \texorpdfstring{$\ast$}{*}}]{font,  }\item[{Im\+Font \texorpdfstring{$\ast$}{*}}]{font32 }\end{DoxyParamCaption})}
+
+
+
+Отрисовывает файловую систему в окне Im\+Gui. 
+
+
+\begin{DoxyParams}{РђСЂРіСѓРјРµРЅС‚С‹}
+{\em font} & Шрифт для текста. \\
+\hline
+{\em font32} & Большой шрифт для текста. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_explorer_windows_a892bd82f04f57d041cff73d2bb762464}\label{class_explorer_windows_a892bd82f04f57d041cff73d2bb762464} 
+\index{ExplorerWindows@{ExplorerWindows}!getMemoryInfo@{getMemoryInfo}}
+\index{getMemoryInfo@{getMemoryInfo}!ExplorerWindows@{ExplorerWindows}}
+\doxysubsubsection{\texorpdfstring{getMemoryInfo()}{getMemoryInfo()}}
+{\footnotesize\ttfamily std\+::pair$<$ float, float $>$ Explorer\+Windows\+::get\+Memory\+Info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Получает информацию о памяти устройства. 
+
+\begin{DoxyReturn}{Р’РѕР·РІСЂР°С‰Р°РµС‚}
+Пара (free\+Mem, total\+Mem), где free\+Mem -\/ доступная память, а total\+Mem -\/ общая память в гигабайтах. 
+\end{DoxyReturn}
+\Hypertarget{class_explorer_windows_a82e3eb9dbb8de05f26918285c7aac99b}\label{class_explorer_windows_a82e3eb9dbb8de05f26918285c7aac99b} 
+\index{ExplorerWindows@{ExplorerWindows}!isDeviceConnected@{isDeviceConnected}}
+\index{isDeviceConnected@{isDeviceConnected}!ExplorerWindows@{ExplorerWindows}}
+\doxysubsubsection{\texorpdfstring{isDeviceConnected()}{isDeviceConnected()}}
+{\footnotesize\ttfamily bool Explorer\+Windows\+::is\+Device\+Connected (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Проверяет, подключено ли Android-\/устройство. 
+
+\begin{DoxyReturn}{Р’РѕР·РІСЂР°С‰Р°РµС‚}
+true, если Android-\/устройство подключено, иначе false. 
+\end{DoxyReturn}
+
+
+РћР±СЉСЏРІР»РµРЅРёСЏ Рё РѕРїРёСЃР°РЅРёСЏ С‡Р»РµРЅРѕРІ РєР»Р°СЃСЃРѕРІ РЅР°С…РѕРґСЏС‚СЃСЏ РІ С„Р°Р№Р»Р°С…\+:\begin{DoxyCompactItemize}
+\item 
+src/Explorer\+Windows.\+h\item 
+src/Explorer\+Windows.\+cpp\end{DoxyCompactItemize}

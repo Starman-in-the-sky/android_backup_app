@@ -17,15 +17,15 @@ file(GLOB IMGUI_SOURCES
 
 add_executable(Phone_backup_app WIN32
      "src/main.cpp" 
-     "src/mainwindow.h" 
+      
      ${IMGUI_SOURCES}   
-     "src/mainwindow.cpp" 
+      
      "src/DevicePage.cpp" 
      "src/DevicePage.h"
-     "src/HistoryPage.cpp"
-     "src/HistoryPage.h"
-     "src/SettingsPage.cpp"
-     "src/SettingsPage.h"
+     "src/BackupPage.cpp"
+     "src/BackupPage.h"
+     
+     
      "src/utils/TextureLoader.cpp"
      "src/utils/TextureLoader.h"
      "src/ExplorerWindows.cpp"

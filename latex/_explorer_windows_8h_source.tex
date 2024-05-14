@@ -1,0 +1,48 @@
+\doxysection{Explorer\+Windows.\+h}
+\hypertarget{_explorer_windows_8h_source}{}\label{_explorer_windows_8h_source}\index{src/ExplorerWindows.h@{src/ExplorerWindows.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ EXPLORERWINDOWS\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ EXPLORERWINDOWS\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <filesystem>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <imgui.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <GLFW/glfw3.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{namespace\ }fs\ =\ std::filesystem;}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_explorer_windows}{ExplorerWindows}}}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{class_explorer_windows_a4a5999289d346010c44fcf3a5e161b19}{ExplorerWindows}}();}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_explorer_windows_aed2c4116c5c679c80c035b8019cdee92}{drawFilesystem}}(ImFont*\ font,\ ImFont*\ font32);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_explorer_windows_aa6d691502363ee1036be761014df2297}{updateDrivesAndDevices}}();}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_explorer_windows_a82e3eb9dbb8de05f26918285c7aac99b}{isDeviceConnected}}();}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00048\ \ \ \ \ std::pair<float,\ float>\ \mbox{\hyperlink{class_explorer_windows_a892bd82f04f57d041cff73d2bb762464}{getMemoryInfo}}();}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00051\ \ \ \ \ fs::path\ currentPath;\ }
+\DoxyCodeLine{00052\ \ \ \ \ std::vector<std::string>\ pathTmp;\ }
+\DoxyCodeLine{00053\ \ \ \ \ std::set<std::string>\ fileExt;\ }
+\DoxyCodeLine{00054\ \ \ \ \ std::vector<std::string>\ logicalDrives;\ }
+\DoxyCodeLine{00055\ \ \ \ \ std::vector<std::string>\ adbDevices;\ }
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ openImage(\textcolor{keyword}{const}\ fs::path\&\ path);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00068\ \ \ \ \ std::string\ execCommand(\textcolor{keyword}{const}\ std::string\&\ cmd);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00074\ \ \ \ \ std::vector<std::string>\ getAdbDevices();}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00081\ \ \ \ \ std::vector<std::string>\ getAndroidDirectoryEntries(\textcolor{keyword}{const}\ std::string\&\ path);}
+\DoxyCodeLine{00082\ \};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ EXPLORERWINDOWS\_H}}
+
+\end{DoxyCode}

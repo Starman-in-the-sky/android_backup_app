@@ -1,7 +1,5 @@
-﻿#include "mainwindow.h"
-#include "DevicePage.h"
-#include "HistoryPage.h"
-#include "SettingsPage.h"
+﻿#include "DevicePage.h"
+#include "BackupPage.h"
 #include "ExplorerWindows.h"
 #include <filesystem>
 #include <iostream>
@@ -19,8 +17,7 @@ namespace fs = std::filesystem;
 
 enum AppState {
     APP_DEVICE,
-    APP_HISTORY,
-    APP_SETTINGS,
+    APP_BACKUP,
     APP_EXPLORER
 };
 
@@ -114,14 +111,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
             ImGui::PopFont();
 
             ImGui::PushFont(fontOpenSans32);
-            if (ImGui::Button("История бэкапов")) {
-                currentState = APP_HISTORY;
-            }
-            ImGui::PopFont();
-
-            ImGui::PushFont(fontOpenSans32);
-            if (ImGui::Button("Настройки")) {
-                currentState = APP_SETTINGS;
+            if (ImGui::Button("Бэкап")) {
+                currentState = APP_BACKUP;
             }
             ImGui::PopFont();
 
@@ -138,11 +129,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         case APP_DEVICE:
             ShowDevicePage(explorer.isDeviceConnected(), fontOpenSans32, &explorer);
             break;
-        case APP_HISTORY:
-            ShowHistoryPage();
-            break;
-        case APP_SETTINGS:
-            ShowSettingsPage();
+        case APP_BACKUP:
+            ShowBackupPage();
             break;
         case APP_EXPLORER:
             explorer.drawFilesystem(fontOpenSans18, fontOpenSans32);

@@ -125,14 +125,25 @@ std::pair<float, float> ExplorerWindows::getMemoryInfo() {
     return { freeMem, totalMem };
 }
 
+std::vector<std::string> ExplorerWindows::getAndroidDirectoryEntries(const std::string& path) {
+    std::vector<std::string> entries;
+    std::string output = execCommand("adb shell ls " + path);
+    std::istringstream stream(output);
+    std::string line;
+    while (std::getline(stream, line)) {
+        entries.push_back(line);
+    }
+    return entries;
+}
+
 void ExplorerWindows::drawFilesystem(ImFont* font, ImFont* font32)
 {
     // Обновляем список логических дисков и устройств перед отрисовкой
     updateDrivesAndDevices();
 
     ImGui::SetNextWindowPos(ImVec2(0, 38)); // Статическая позиция (с учетом высоты меню бара)
-    ImGui::SetNextWindowSize(ImVec2(1280, 682));
-    if (ImGui::Begin("Filesystem", nullptr, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar))
+    ImGui::SetNextWindowSize(ImVec2(900, 500));
+    if (ImGui::Begin("Explorer", nullptr, ImGuiWindowFlags_NoCollapse ))
     {
         std::stringstream ss(currentPath.string());
         std::string s;
@@ -201,30 +212,53 @@ void ExplorerWindows::drawFilesystem(ImFont* font, ImFont* font32)
         {
             ImGui::GetStyle().ButtonTextAlign = ImVec2(0.0f, 0.5f);
             float buttonWidth = ImGui::GetWindowSize().x - ImGui::GetStyle().ScrollbarSize - ImGui::GetStyle().WindowPadding.x * 2;
-            for (const auto& item : fs::directory_iterator(currentPath))
-            {
-                if (item.path().filename().c_str()[0] == '.') continue;
-
-                if (fs::is_directory(item))
-                {
-                    if (ImGui::Button(item.path().filename().string().c_str(), ImVec2(buttonWidth, 25)))
-                    {
-                        currentPath = item;
+            if (currentPath.string().find("/mnt/sdcard") != std::string::npos) {
+                // Если мы находимся в Android устройстве, используем ADB для получения списка файлов
+                auto directoryEntries = getAndroidDirectoryEntries(currentPath.string());
+                for (const auto& entry : directoryEntries) {
+                    if (entry.empty()) continue;
+                    if (entry.back() == '/') {
+                        // Это директория
+                        if (ImGui::Button(entry.c_str(), ImVec2(buttonWidth, 25))) {
+                            currentPath /= entry.substr(0, entry.size() - 1); // Удаляем последний символ '/'
+                        }
+                    }
+                    else {
+                        // Это файл
+                        if (fileExt.find(fs::path(entry).extension().string()) != fileExt.end()) {
+                            ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.55f, 0.714f, 0.0f, 1.0f));
+                            ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0.7f, 0.714f, 0.0f, 1.0f));
+                            ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.56f, 0.814f, 0.0f, 1.0f));
+                            if (ImGui::Button(entry.c_str(), ImVec2(buttonWidth, 25))) openImage(currentPath / entry);
+                            ImGui::PopStyleColor(3);
+                        }
+                        else {
+                            ImGui::Button(entry.c_str(), ImVec2(buttonWidth, 25));
+                        }
                     }
                 }
-                else if (fs::is_regular_file(item))
-                {
-                    if (fileExt.find(item.path().extension().string()) != fileExt.end())
-                    {
-                        ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.55f, 0.714f, 0.0f, 1.0f));
-                        ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0.7f, 0.714f, 0.0f, 1.0f));
-                        ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.56f, 0.814f, 0.0f, 1.0f));
-                        if (ImGui::Button(item.path().filename().string().c_str(), ImVec2(buttonWidth, 25))) openImage(item.path());
-                        ImGui::PopStyleColor(3);
+            }
+            else {
+                // Обычный режим работы с файлами
+                for (const auto& item : fs::directory_iterator(currentPath)) {
+                    if (item.path().filename().c_str()[0] == '.') continue;
+
+                    if (fs::is_directory(item)) {
+                        if (ImGui::Button(item.path().filename().string().c_str(), ImVec2(buttonWidth, 25))) {
+                            currentPath = item;
+                        }
                     }
-                    else
-                    {
-                        ImGui::Button(item.path().filename().string().c_str(), ImVec2(buttonWidth, 25));
+                    else if (fs::is_regular_file(item)) {
+                        if (fileExt.find(item.path().extension().string()) != fileExt.end()) {
+                            ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.55f, 0.714f, 0.0f, 1.0f));
+                            ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0.7f, 0.714f, 0.0f, 1.0f));
+                            ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.56f, 0.814f, 0.0f, 1.0f));
+                            if (ImGui::Button(item.path().filename().string().c_str(), ImVec2(buttonWidth, 25))) openImage(item.path());
+                            ImGui::PopStyleColor(3);
+                        }
+                        else {
+                            ImGui::Button(item.path().filename().string().c_str(), ImVec2(buttonWidth, 25));
+                        }
                     }
                 }
             }
