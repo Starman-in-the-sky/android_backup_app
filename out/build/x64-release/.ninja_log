@@ -1,0 +1,14 @@
+# ninja log v5
+33	149	7368527696008381	CMakeFiles/Phone_backup_app.dir/src/mainwindow.cpp.obj	930e007d5f652bc7
+150	453	7368527698918388	CMakeFiles/Phone_backup_app.dir/src/DevicePage.cpp.obj	2b1b1c7b32533ef9
+453	819	7368527701448378	CMakeFiles/Phone_backup_app.dir/src/HistoryPage.cpp.obj	cc5c08ac7d57a9f0
+12	827	7368527702138383	CMakeFiles/Phone_backup_app.dir/dep/imgui/backends/imgui_impl_opengl3.cpp.obj	29464f9b75a2d3e6
+20	1555	7368527709778378	CMakeFiles/Phone_backup_app.dir/dep/imgui/imgui_tables.cpp.obj	c496986f7651b65f
+9	1942	7368527713568386	CMakeFiles/Phone_backup_app.dir/dep/imgui/backends/imgui_impl_glfw.cpp.obj	ad66e8fc208ff82b
+819	2000	7368527713768382	CMakeFiles/Phone_backup_app.dir/src/SettingsPage.cpp.obj	81ec8646a2d5001c
+18	2484	7368527719058378	CMakeFiles/Phone_backup_app.dir/dep/imgui/imgui_draw.cpp.obj	1f38ea075013e571
+25	2844	7368527722868388	CMakeFiles/Phone_backup_app.dir/dep/imgui/imgui_widgets.cpp.obj	f4b9ee5306e24f62
+5	4268	7368527737188380	CMakeFiles/Phone_backup_app.dir/src/main.cpp.obj	fca69c08aa7834bc
+828	4421	7368527738778374	CMakeFiles/Phone_backup_app.dir/src/utils/TextureLoader.cpp.obj	acb58aa61af063b7
+15	5077	7368527745318664	CMakeFiles/Phone_backup_app.dir/dep/imgui/imgui.cpp.obj	be124cd4d70e8df7
+5077	5896	7368527747548374	Phone_backup_app.exe	643f0d850de590bc
